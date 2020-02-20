@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = '{{theme}}';
+module.exports = {{theme}};
