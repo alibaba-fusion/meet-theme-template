@@ -1,0 +1,13 @@
+{
+  "name": "{{name}}",
+  "version": "{{version}}",
+  "author": "{{author}}",
+  "main": "index.js",
+  "peerDependencies": {
+    "@alifd/meet": "~{{meet_version}}"
+  },
+  "license": "ISC",
+  "publishConfig": {
+    "registry": "{{registry}}"
+  }
+}
