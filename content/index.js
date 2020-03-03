@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = {{theme |  dump | safe}};
+module.exports = {{theme | safe}};
