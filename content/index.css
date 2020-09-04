@@ -1,8 +1,7 @@
 :root {
     {% for compName, vars in theme %}
-    /* ------------------------ {{compName}} ------------------------ */
     {% for k, v in vars %}
-        {{k}}: {{v}};
-    {% endfor %}
+        {{k}}: {{v | safe}};
+    {%- endfor -%}
     {% endfor %}
 }
