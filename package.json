@@ -1,7 +1,10 @@
 {
   "name": "@alifd/meet-theme-template",
-  "version": "2.0.1",
+  "version": "2.1.1",
   "description": "meet theme template",
   "author": "jiarui.xjr",
-  "license": "ISC"
+  "license": "ISC",
+  "scripts": {
+    "release": "npm publish --access public && tnpm sync @vacio/meet-theme-template"
+  }
 }

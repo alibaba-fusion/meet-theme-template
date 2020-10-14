@@ -5,3 +5,10 @@
     {%- endfor -%}
     {% endfor %}
 }
+
+{% if theme.Core['--font-path'] and theme.Core['--font-family'] %}
+@font-face {
+  font-family: {{ theme.Core['--font-family'] | safe }};
+  src: {{ theme.Core['--font-path'] | safe }} format("truetype");
+}
+{% endif %}
