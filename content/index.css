@@ -5,10 +5,11 @@
     {%- endfor -%}
     {% endfor %}
 }
-
-{% if theme.Core['--font-path'] and theme.Core['--font-family'] %}
+{% if theme.Core['--font-path'] and theme.Core['--font-family'] -%}
+    {% set fontPath = theme.Core['--icon-font-path'] if '--icon-font-path' in theme.Core else (theme.Core['--font-path'] + ' format("truetype")') -%}
+    {% set fontFamily = theme.Core['--icon-family-path'] if '--icon-family-path' in theme.Core else theme.Core['--font-family'] %}
 @font-face {
-  font-family: {{ theme.Core['--font-family'] | safe }};
-  src: {{ theme.Core['--font-path'] | safe }} format("truetype");
+    font-family: {{ fontFamily | safe }};
+    src: {{ fontPath | safe }};
 }
-{% endif %}
+{% endif -%}
