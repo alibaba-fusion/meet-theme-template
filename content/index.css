@@ -1,15 +1,25 @@
 :root {
-    {% for compName, vars in theme %}
+    {%- for compName, vars in theme -%}
     {% for k, v in vars %}
         {{k}}: {{v | safe}};
     {%- endfor -%}
     {% endfor %}
 }
-{% if theme.Core['--font-path'] and theme.Core['--font-family'] -%}
-    {% set fontPath = theme.Core['--icon-font-path'] if '--icon-font-path' in theme.Core else (theme.Core['--font-path'] + ' format("truetype")') -%}
-    {% set fontFamily = theme.Core['--icon-family-path'] if '--icon-family-path' in theme.Core else theme.Core['--font-family'] %}
+{% set fontPath = theme.Core['--icon-font-path'] if '--icon-font-path' in theme.Core else (theme.Core['--font-path'] + ' format("truetype")') -%}
+{% set fontFamily = theme.Core['--icon-font-family'] %}
 @font-face {
     font-family: {{ fontFamily | safe }};
     src: {{ fontPath | safe }};
 }
+
+{% set regExp = r/^--icon-content-*/g %}
+{%- for compName, vars in theme -%}
+{%- for k, v in vars -%}
+{%- if regExp.test(k) -%}
+.mt-icon-{{k | replace('--icon-content-', '')}}::before {
+    content: var({{k}});
+}
 {% endif -%}
+{%- endfor -%}
+{% endfor %}
+

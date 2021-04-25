@@ -8,4 +8,7 @@ const content = fs.readFileSync(
   { encoding: 'utf8' }
 );
 
-console.log(nunjucks.renderString(content, { theme: theme }));
+fs.writeFileSync(
+  'result.css',
+  nunjucks.renderString(content, { theme: theme })
+);
