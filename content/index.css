@@ -12,14 +12,11 @@
     src: {{ fontPath | safe }};
 }
 
-{% set regExp = r/^--icon-content-*/g %}
-{%- for compName, vars in theme -%}
-{%- for k, v in vars -%}
+{% set regExp = r/^--icon-content-*/ %}
+{%- for k, v in theme.Core -%}
 {%- if regExp.test(k) -%}
 .mt-icon-{{k | replace('--icon-content-', '')}}::before {
     content: var({{k}});
 }
 {% endif -%}
 {%- endfor -%}
-{% endfor %}
-
